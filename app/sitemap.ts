@@ -10,5 +10,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: 'https://cinematic-prompt-engine.vercel.app/examples',
       lastModified: new Date(),
     },
+    {
+      url: 'https://cinematic-prompt-engine.vercel.app/how-to-write-ai-prompts',
+      lastModified: new Date(),
+    },
   ]
 }
