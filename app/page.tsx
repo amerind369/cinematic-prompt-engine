@@ -55,11 +55,11 @@ export default function Home() {
 
       {/* Navigation */}
 
-      <div className="flex gap-6 mb-10 text-blue-600 underline">
+      <nav className="flex gap-6 mb-10 text-blue-600 underline">
         <a href="/">Prompt Builder</a>
         <a href="/examples">Examples</a>
         <a href="/how-to-write-ai-prompts">Prompt Guide</a>
-      </div>
+      </nav>
 
       {/* Scene Input */}
 
