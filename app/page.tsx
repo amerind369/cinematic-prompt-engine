@@ -64,9 +64,6 @@ export default function Home() {
       {/* Scene Input */}
 
       <div className="mb-6">
-  <textarea
-
-      <div className="mb-6">
         <textarea
           className="w-full p-4 border rounded-lg"
           rows={4}
