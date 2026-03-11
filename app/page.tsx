@@ -156,6 +156,51 @@ export default function Home() {
 
         </div>
       )}
+            {/* SEO Content Section */}
+
+      <div className="mt-20 max-w-3xl">
+
+        <h2 className="text-2xl font-bold mb-4">
+          What is an AI Prompt Builder?
+        </h2>
+
+        <p className="mb-6">
+          An AI prompt builder helps transform a simple scene description
+          into a structured prompt that AI image and video generation models
+          can understand more clearly. Instead of writing random descriptive
+          words, structured prompts organize the visual elements of a scene
+          such as the subject, environment, lighting and atmosphere.
+        </p>
+
+        <p className="mb-10">
+          Well structured prompts improve the quality and consistency of
+          generated images and videos. By providing clear visual signals,
+          the AI model can interpret the scene more accurately and produce
+          better results.
+        </p>
+
+
+        <h2 className="text-2xl font-bold mb-4">
+          How the Cinematic Prompt Engine Works
+        </h2>
+
+        <p className="mb-6">
+          The Cinematic Prompt Engine analyzes your scene description and
+          extracts the key visual components of the scene. It identifies the
+          main subject, the environment, lighting conditions and overall
+          atmosphere before constructing a structured prompt optimized for
+          AI generation models.
+        </p>
+
+        <p className="mb-10">
+          Instead of generating random prompt text, the system builds prompts
+          using a structured approach inspired by cinematic scene construction.
+          This helps produce prompts that contain clear visual signals and
+          higher information density, which improves the results produced by
+          modern AI image and video generation tools.
+        </p>
+
+      </div>
 
     </main>
   )
