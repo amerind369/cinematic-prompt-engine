@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Cinematic Prompt Generator for Image & Video Scenes",
-  description: "Generate cinematic AI prompts for image and video scenes using structured prompt engineering. Create better prompts for AI image and video generation.",
+  title: "AI Prompt Builder for Images & Video | Cinematic Prompt Engine",
+  description:
+    "Build structured AI prompts for image and video generation. The Cinematic Prompt Engine analyzes your scene, selects prompt techniques, and generates optimized prompts for AI image and video models.",
 };
 
 export default function RootLayout({
@@ -25,8 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="google-site-verification" content="8oUFzSgW1WarlIY5s3dfz6-3c5D9fd01-tj5A59r_jk" />
-        </head>
+        <meta
+          name="google-site-verification"
+          content="8oUFzSgW1WarlIY5s3dfz6-3c5D9fd01-tj5A59r_jk"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
