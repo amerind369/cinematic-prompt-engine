@@ -45,17 +45,32 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-100 p-10">
 
-      <h1 className="text-3xl font-bold mb-6">
-        Cinematic Prompt Engine
+      <h1 className="text-3xl font-bold mb-2">
+        AI Prompt Builder for Images & Video
       </h1>
 
+      <p className="mb-6 text-gray-700">
+        Analyze your scene, select prompt engineering techniques, and generate structured prompts optimized for AI image and video models.
+      </p>
+
+      {/* Navigation */}
+
+      <div className="flex gap-6 mb-10 text-blue-600 underline">
+        <a href="/">Prompt Builder</a>
+        <a href="/examples">Examples</a>
+        <a href="/how-to-write-ai-prompts">Prompt Guide</a>
+      </div>
+
       {/* Scene Input */}
+
+      <div className="mb-6">
+  <textarea
 
       <div className="mb-6">
         <textarea
           className="w-full p-4 border rounded-lg"
           rows={4}
-          placeholder="Describe your scene..."
+          placeholder="Example: A detective standing in a rainy neon-lit alley..."
           value={scene}
           onChange={(e) => setScene(e.target.value)}
         />
@@ -156,7 +171,8 @@ export default function Home() {
 
         </div>
       )}
-            {/* SEO Content Section */}
+
+      {/* SEO Content Section */}
 
       <div className="mt-20 max-w-3xl">
 
@@ -165,39 +181,23 @@ export default function Home() {
         </h2>
 
         <p className="mb-6">
-          An AI prompt builder helps transform a simple scene description
-          into a structured prompt that AI image and video generation models
-          can understand more clearly. Instead of writing random descriptive
-          words, structured prompts organize the visual elements of a scene
-          such as the subject, environment, lighting and atmosphere.
+          An AI prompt builder transforms a simple scene description into a structured prompt that AI image and video generation models can interpret more accurately. Instead of random descriptive words, structured prompts organize visual elements such as subject, environment, lighting, atmosphere and style.
         </p>
 
         <p className="mb-10">
-          Well structured prompts improve the quality and consistency of
-          generated images and videos. By providing clear visual signals,
-          the AI model can interpret the scene more accurately and produce
-          better results.
+          Clear prompt structure improves consistency and quality in generated images and videos by providing stronger visual signals to the AI model.
         </p>
 
-
         <h2 className="text-2xl font-bold mb-4">
-          How the Cinematic Prompt Engine Works
+          How the Prompt Builder Works
         </h2>
 
         <p className="mb-6">
-          The Cinematic Prompt Engine analyzes your scene description and
-          extracts the key visual components of the scene. It identifies the
-          main subject, the environment, lighting conditions and overall
-          atmosphere before constructing a structured prompt optimized for
-          AI generation models.
+          The Cinematic Prompt Engine analyzes your scene description and extracts key visual components such as subject, environment, lighting and mood. It then classifies the scene type and selects the most relevant prompt engineering techniques.
         </p>
 
         <p className="mb-10">
-          Instead of generating random prompt text, the system builds prompts
-          using a structured approach inspired by cinematic scene construction.
-          This helps produce prompts that contain clear visual signals and
-          higher information density, which improves the results produced by
-          modern AI image and video generation tools.
+          Finally, the system constructs a structured prompt with high signal density, ensuring that every element contributes meaningful visual information for AI image and video generation.
         </p>
 
       </div>
