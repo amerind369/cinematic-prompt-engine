@@ -6,6 +6,8 @@ const openai = new OpenAI({
 })
 
 const SYSTEM_PROMPT = `
+IMPORTANT: You must return the final result as a JSON object.
+
 ${HANDBOOK_SYSTEM_PROMPT}
 
 Important clarification:
@@ -17,11 +19,7 @@ Scene Type is NOT a prompt technique.
 
 Prompt techniques must appear ONLY in the "techniques" field.
 
-OUTPUT FORMAT RULE:
-
-Return the result strictly as JSON.
-
-The JSON structure must be:
+OUTPUT FORMAT (json):
 
 {
   "analysis": {
@@ -37,12 +35,11 @@ The JSON structure must be:
 
 LANGUAGE RULE:
 
-The generated prompt MUST always be written in English,
+The generated prompt must always be written in English,
 even if the user input is written in another language.
 `
 
 export async function POST(req: Request) {
-
   try {
 
     const { scene } = await req.json()
@@ -75,6 +72,7 @@ export async function POST(req: Request) {
     try {
       parsed = JSON.parse(content)
     } catch (parseError) {
+
       console.error("JSON PARSE ERROR:", parseError)
       console.error("RAW MODEL OUTPUT:", content)
 
@@ -96,5 +94,4 @@ export async function POST(req: Request) {
     })
 
   }
-
 }
