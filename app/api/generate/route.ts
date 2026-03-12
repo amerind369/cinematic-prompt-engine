@@ -16,6 +16,29 @@ Scene Type must describe the type of scene
 Scene Type is NOT a prompt technique.
 
 Prompt techniques must appear ONLY in the "techniques" field.
+
+OUTPUT FORMAT RULE:
+
+Return the result strictly as JSON.
+
+The JSON structure must be:
+
+{
+  "analysis": {
+    "subject": "",
+    "environment": "",
+    "lighting": "",
+    "mood": ""
+  },
+  "scene_type": "",
+  "techniques": [],
+  "prompt": ""
+}
+
+LANGUAGE RULE:
+
+The generated prompt MUST always be written in English,
+even if the user input is written in another language.
 `
 
 export async function POST(req: Request) {
@@ -43,7 +66,23 @@ export async function POST(req: Request) {
 
     console.log("MODEL RESPONSE:", content)
 
-    const parsed = JSON.parse(content!)
+    if (!content) {
+      throw new Error("Empty response from model")
+    }
+
+    let parsed
+
+    try {
+      parsed = JSON.parse(content)
+    } catch (parseError) {
+      console.error("JSON PARSE ERROR:", parseError)
+      console.error("RAW MODEL OUTPUT:", content)
+
+      return Response.json({
+        error: "Invalid JSON returned by model",
+        raw: content
+      })
+    }
 
     return Response.json(parsed)
 
