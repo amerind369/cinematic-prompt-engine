@@ -9,6 +9,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const [copied, setCopied] = useState(false)
 
+  const MAX_CHARS = 500
+
   const generatePrompt = async () => {
 
     if (!scene) return
@@ -63,14 +65,21 @@ export default function Home() {
 
       {/* Scene Input */}
 
-      <div className="mb-6">
+      <div className="mb-2">
         <textarea
           className="w-full p-4 border rounded-lg"
           rows={4}
+          maxLength={MAX_CHARS}
           placeholder="Example: A detective standing in a rainy neon-lit alley..."
           value={scene}
           onChange={(e) => setScene(e.target.value)}
         />
+      </div>
+
+      {/* Character Counter */}
+
+      <div className="text-sm text-gray-500 mb-6">
+        {scene.length} / {MAX_CHARS} characters
       </div>
 
       {/* Example Buttons */}
