@@ -1,8 +1,20 @@
 import OpenAI from "openai"
 import { HANDBOOK_SYSTEM_PROMPT } from "@/lib/handbook"
+import { Redis } from "@upstash/redis"
+import { Ratelimit } from "@upstash/ratelimit"
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
+})
+
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL!,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+})
+
+const ratelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(30, "24 h"),
 })
 
 const SYSTEM_PROMPT = `
@@ -42,6 +54,19 @@ even if the user input is written in another language.
 export async function POST(req: Request) {
   try {
 
+    const ip =
+      req.headers.get("x-forwarded-for") ??
+      req.headers.get("x-real-ip") ??
+      "anonymous"
+
+    const { success } = await ratelimit.limit(ip)
+
+    if (!success) {
+      return Response.json({
+        error: "Rate limit exceeded. Maximum 30 prompts per 24 hours."
+      }, { status: 429 })
+    }
+
     const { scene } = await req.json()
 
     const response = await openai.chat.completions.create({
@@ -61,8 +86,6 @@ export async function POST(req: Request) {
 
     const content = response.choices[0].message.content
 
-    console.log("MODEL RESPONSE:", content)
-
     if (!content) {
       throw new Error("Empty response from model")
     }
@@ -73,9 +96,6 @@ export async function POST(req: Request) {
       parsed = JSON.parse(content)
     } catch (parseError) {
 
-      console.error("JSON PARSE ERROR:", parseError)
-      console.error("RAW MODEL OUTPUT:", content)
-
       return Response.json({
         error: "Invalid JSON returned by model",
         raw: content
@@ -85,8 +105,6 @@ export async function POST(req: Request) {
     return Response.json(parsed)
 
   } catch (error) {
-
-    console.error("API ERROR:", error)
 
     return Response.json({
       error: "API error",
