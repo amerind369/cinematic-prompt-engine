@@ -90,6 +90,28 @@ export default function HowToWriteAIPrompts() {
         the model generate a more coherent image or video.
       </p>
 
+
+      <h2 className="text-xl font-semibold mt-10 mb-2">
+        Keep Prompts Clear and Concise
+      </h2>
+
+      <p className="mb-4 max-w-2xl">
+        A common mistake is adding too many filler words that do not improve
+        the result.
+      </p>
+
+      <div className="bg-white p-4 rounded border mb-6 max-w-2xl">
+        Example of filler words:<br/><br/>
+        <b>epic masterpiece ultra amazing cinematic scene</b>
+      </div>
+
+      <p className="mb-10 max-w-2xl">
+        A better strategy is to keep prompts concise while preserving the
+        important visual signals. Removing unnecessary words helps AI models
+        focus on the most important elements of the scene.
+      </p>
+
+
       <h2 className="text-2xl font-bold mt-12 mb-4">
 Common Cinematic Camera Terms Used in AI Prompts
 </h2>
@@ -139,27 +161,6 @@ Depth of field describes how much of the image is in focus. A shallow depth of f
 <p className="mb-6">
 Volumetric lighting refers to visible light beams interacting with particles such as fog, dust, or smoke. This technique creates dramatic atmosphere and is commonly used in cinematic scenes and fantasy environments.
 </p>
-
-
-      <h2 className="text-xl font-semibold mt-10 mb-2">
-        Keep Prompts Clear and Concise
-      </h2>
-
-      <p className="mb-4 max-w-2xl">
-        A common mistake is adding too many filler words that do not improve
-        the result.
-      </p>
-
-      <div className="bg-white p-4 rounded border mb-6 max-w-2xl">
-        Example of filler words:<br/><br/>
-        <b>epic masterpiece ultra amazing cinematic scene</b>
-      </div>
-
-      <p className="mb-10 max-w-2xl">
-        A better strategy is to keep prompts concise while preserving the
-        important visual signals. Removing unnecessary words helps AI models
-        focus on the most important elements of the scene.
-      </p>
 
 
       <h2 className="text-xl font-semibold mt-10 mb-2">
