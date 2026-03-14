@@ -49,15 +49,6 @@ You can generate structured cinematic prompts instantly using the AI Prompt Buil
 The tool is currently free to use.
 </p>
 
-<a
-  href="/"
-  className="inline-block px-5 py-2 bg-black text-white rounded"
->
-Try the Prompt Builder →
-</a>
-
-</div>
-
       </div>
 
       <div className="mt-10">
