@@ -42,6 +42,14 @@ export default function FantasyPromptsPage() {
         and cinematic fantasy scenes.
       </p>
 
+      <h2 className="text-xl font-bold mt-10 mb-3">
+Cinematic Prompt Tips
+</h2>
+
+<p className="mb-6">
+Fantasy scenes benefit greatly from cinematic lighting and camera cues. Adding elements like <b>dramatic lighting</b>, <b>volumetric fog</b>, or a <b>wide 35mm lens</b> can help AI models generate more epic environments and immersive fantasy worlds.
+</p>
+
       <div className="mt-10">
         <a
           href="/"
