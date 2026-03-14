@@ -73,6 +73,10 @@ export default function Home() {
         Analyze your scene, select prompt engineering techniques, and generate structured prompts optimized for AI image and video models.
       </p>
 
+      <p className="mb-4 text-green-700 font-semibold">
+The AI Prompt Builder is currently free to use. Generate cinematic prompts while the tool remains publicly available.
+</p>
+
       {/* Scene Input */}
 
       <div className="mb-2">
