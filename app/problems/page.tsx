@@ -35,7 +35,7 @@ export default function ProblemsPage() {
           </p>
         </a>
 
-        <div className="mt-12 p-6 bg-gray-100 rounded-lg">
+   <div className="mt-12 p-6 bg-gray-100 rounded-lg">
 
 <h3 className="text-lg font-bold mb-2">
 Generate Your Own AI Prompt
@@ -48,6 +48,8 @@ You can generate structured cinematic prompts instantly using the AI Prompt Buil
 <p className="mb-4 font-semibold">
 The tool is currently free to use.
 </p>
+
+</div>
 
       </div>
 
