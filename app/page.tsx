@@ -47,6 +47,24 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-100 p-10">
 
+      {/* Header */}
+
+      <header className="flex justify-between items-center mb-10">
+
+        <a href="/" className="text-xl font-bold">
+          Cinematic Prompt Engine
+        </a>
+
+        <nav className="flex gap-6 text-blue-600 underline">
+          <a href="/examples">Examples</a>
+          <a href="/how-to-write-ai-prompts">Guide</a>
+          <a href="/styles">Styles</a>
+          <a href="/industries">Industries</a>
+          <a href="/problems">Problems</a>
+        </nav>
+
+      </header>
+
       <h1 className="text-3xl font-bold mb-2">
         AI Prompt Builder for Images & Video
       </h1>
@@ -54,14 +72,6 @@ export default function Home() {
       <p className="mb-6 text-gray-700">
         Analyze your scene, select prompt engineering techniques, and generate structured prompts optimized for AI image and video models.
       </p>
-
-      {/* Navigation */}
-
-      <nav className="flex gap-6 mb-10 text-blue-600 underline">
-        <a href="/">Prompt Builder</a>
-        <a href="/examples">Examples</a>
-        <a href="/how-to-write-ai-prompts">Prompt Guide</a>
-      </nav>
 
       {/* Scene Input */}
 
@@ -75,8 +85,6 @@ export default function Home() {
           onChange={(e) => setScene(e.target.value)}
         />
       </div>
-
-      {/* Character Counter */}
 
       <div className="text-sm text-gray-500 mb-6">
         {scene.length} / {MAX_CHARS} characters
