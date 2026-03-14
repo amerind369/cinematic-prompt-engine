@@ -41,6 +41,14 @@ export default function CyberpunkPromptsPage() {
         Rain, fog and dense urban atmosphere help create depth and cinematic mood.
       </p>
 
+      <h2 className="text-xl font-bold mt-10 mb-3">
+Cinematic Prompt Tips
+</h2>
+
+<p className="mb-6">
+Adding cinematic camera terms can dramatically improve cyberpunk prompts. Many creators include elements such as <b>35mm lens</b>, <b>wide cinematic shot</b>, or <b>shallow depth of field</b> to create larger futuristic city environments and more realistic lighting.
+</p>
+
       <div className="mt-10">
         <a
           href="/"
