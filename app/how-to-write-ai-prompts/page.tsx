@@ -163,9 +163,9 @@ Volumetric lighting refers to visible light beams interacting with particles suc
 </p>
 
 
-      <h2 className="text-xl font-semibold mt-10 mb-2">
-        Try the AI Prompt Builder
-      </h2>
+      <h2 className="text-xl font-bold mt-12 mb-3">
+Try the AI Prompt Builder
+</h2>
 
       <p className="mb-6 max-w-2xl">
         If you want to generate structured prompts automatically, you can
@@ -174,12 +174,16 @@ Volumetric lighting refers to visible light beams interacting with particles suc
         prompt optimized for AI image and video generation.
       </p>
 
-      <a
-        href="/"
-        className="text-blue-600 underline"
-      >
-        Try the AI Prompt Builder →
-      </a>
+      <p className="mb-6 font-semibold">
+The tool is currently free to use.
+</p>
+
+<a
+  href="/"
+  className="inline-block px-6 py-3 bg-black text-white rounded-lg"
+>
+Try the AI Prompt Builder →
+</a>
 
     </main>
   )
