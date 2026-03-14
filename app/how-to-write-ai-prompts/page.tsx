@@ -90,6 +90,56 @@ export default function HowToWriteAIPrompts() {
         the model generate a more coherent image or video.
       </p>
 
+      <h2 className="text-2xl font-bold mt-12 mb-4">
+Common Cinematic Camera Terms Used in AI Prompts
+</h2>
+
+<p className="mb-6">
+Many advanced AI prompts include cinematic camera terms. These terms help the AI model understand how the scene should be framed, what perspective to use, and how the environment should appear in relation to the subject.
+</p>
+
+<h3 className="text-xl font-semibold mt-6 mb-2">35mm Lens</h3>
+
+<p className="mb-4">
+A 35mm lens creates a wider cinematic perspective. It captures more of the surrounding environment while keeping the subject clearly visible. This lens is commonly used for environmental shots and cinematic scenes where the setting is important.
+</p>
+
+<p className="mb-6">
+Example prompt element: <b>35mm lens, cinematic composition</b>
+</p>
+
+<h3 className="text-xl font-semibold mt-6 mb-2">50mm Lens</h3>
+
+<p className="mb-4">
+A 50mm lens produces a natural perspective that closely resembles how the human eye sees the world. It balances the subject and environment, making it one of the most commonly used lenses in cinematic photography.
+</p>
+
+<p className="mb-6">
+Example prompt element: <b>50mm lens, shallow depth of field</b>
+</p>
+
+<h3 className="text-xl font-semibold mt-6 mb-2">85mm Lens</h3>
+
+<p className="mb-4">
+An 85mm lens is commonly used for cinematic portraits and close-up shots. It compresses the background and isolates the subject, creating a dramatic and focused visual look.
+</p>
+
+<p className="mb-6">
+Example prompt element: <b>85mm lens, dramatic rim lighting</b>
+</p>
+
+<h3 className="text-xl font-semibold mt-6 mb-2">Depth of Field</h3>
+
+<p className="mb-6">
+Depth of field describes how much of the image is in focus. A shallow depth of field blurs the background and isolates the subject, while a deep depth of field keeps most of the scene sharp and detailed.
+</p>
+
+<h3 className="text-xl font-semibold mt-6 mb-2">Volumetric Lighting</h3>
+
+<p className="mb-6">
+Volumetric lighting refers to visible light beams interacting with particles such as fog, dust, or smoke. This technique creates dramatic atmosphere and is commonly used in cinematic scenes and fantasy environments.
+</p>
+
 
       <h2 className="text-xl font-semibold mt-10 mb-2">
         Keep Prompts Clear and Concise
