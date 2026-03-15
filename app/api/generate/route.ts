@@ -67,7 +67,22 @@ export async function POST(req: Request) {
       }, { status: 429 })
     }
 
-    const { scene } = await req.json()
+    const { scene, hints } = await req.json()
+
+    let userMessage = `Scene description:\n${scene}`
+
+    if (hints) {
+
+      const hintLines = Object.entries(hints)
+        .filter(([_, value]) => value && value !== "")
+        .map(([key, value]) => `${key}: ${value}`)
+        .join("\n")
+
+      if (hintLines.length > 0) {
+        userMessage += `\n\nOptional scene hints:\n${hintLines}`
+      }
+
+    }
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -78,7 +93,7 @@ export async function POST(req: Request) {
         },
         {
           role: "user",
-          content: scene
+          content: userMessage
         }
       ],
       response_format: { type: "json_object" }
