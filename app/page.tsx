@@ -9,6 +9,17 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const [copied, setCopied] = useState(false)
 
+  const [showHints, setShowHints] = useState(false)
+
+  const [hints, setHints] = useState({
+    focus: "",
+    camera: "",
+    lighting: "",
+    environment: "",
+    atmosphere: "",
+    style: ""
+  })
+
   const MAX_CHARS = 500
 
   const generatePrompt = async () => {
@@ -22,7 +33,10 @@ export default function Home() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ scene }),
+      body: JSON.stringify({
+        scene,
+        hints
+      }),
     })
 
     const data = await res.json()
@@ -42,6 +56,13 @@ export default function Home() {
     setTimeout(() => {
       setCopied(false)
     }, 1500)
+  }
+
+  const updateHint = (key: string, value: string) => {
+    setHints((prev) => ({
+      ...prev,
+      [key]: value
+    }))
   }
 
   return (
@@ -74,8 +95,8 @@ export default function Home() {
       </p>
 
       <p className="mb-4 text-green-700 font-semibold">
-The AI Prompt Builder is currently free to use. Generate cinematic prompts while the tool remains publicly available.
-</p>
+        The AI Prompt Builder is currently free to use. Generate cinematic prompts while the tool remains publicly available.
+      </p>
 
       {/* Scene Input */}
 
@@ -90,9 +111,144 @@ The AI Prompt Builder is currently free to use. Generate cinematic prompts while
         />
       </div>
 
-      <div className="text-sm text-gray-500 mb-6">
+      <div className="text-sm text-gray-500 mb-4">
         {scene.length} / {MAX_CHARS} characters
       </div>
+
+      {/* Checkbox */}
+
+      <div className="mb-6">
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={showHints}
+            onChange={(e) => setShowHints(e.target.checked)}
+          />
+          Add scene details (optional)
+        </label>
+      </div>
+
+      {/* Dropdown Hints */}
+
+      {showHints && (
+
+        <div className="grid grid-cols-2 gap-4 mb-6">
+
+          {/* Scene Focus */}
+
+          <div>
+            <label className="block text-sm mb-1">Scene Focus</label>
+            <select
+              className="w-full p-2 border rounded"
+              value={hints.focus}
+              onChange={(e) => updateHint("focus", e.target.value)}
+            >
+              <option value="">Default / None</option>
+              <option value="character focused">Character focused</option>
+              <option value="action focused">Action focused</option>
+              <option value="object focused">Object focused</option>
+              <option value="environment focused">Environment focused</option>
+              <option value="balanced scene">Balanced scene</option>
+            </select>
+          </div>
+
+          {/* Camera */}
+
+          <div>
+            <label className="block text-sm mb-1">Camera</label>
+            <select
+              className="w-full p-2 border rounded"
+              value={hints.camera}
+              onChange={(e) => updateHint("camera", e.target.value)}
+            >
+              <option value="">Default / None</option>
+              <option value="close-up">Close-up</option>
+              <option value="medium shot">Medium shot</option>
+              <option value="wide shot">Wide shot</option>
+              <option value="overhead view">Overhead view</option>
+              <option value="POV shot">POV shot</option>
+            </select>
+          </div>
+
+          {/* Lighting */}
+
+          <div>
+            <label className="block text-sm mb-1">Lighting</label>
+            <select
+              className="w-full p-2 border rounded"
+              value={hints.lighting}
+              onChange={(e) => updateHint("lighting", e.target.value)}
+            >
+              <option value="">Default / None</option>
+              <option value="soft lighting">Soft lighting</option>
+              <option value="dramatic lighting">Dramatic lighting</option>
+              <option value="low light">Low light</option>
+              <option value="backlit">Backlit</option>
+              <option value="neon lighting">Neon lighting</option>
+              <option value="storm lighting">Storm lighting</option>
+            </select>
+          </div>
+
+          {/* Environment */}
+
+          <div>
+            <label className="block text-sm mb-1">Environment</label>
+            <select
+              className="w-full p-2 border rounded"
+              value={hints.environment}
+              onChange={(e) => updateHint("environment", e.target.value)}
+            >
+              <option value="">Default / None</option>
+              <option value="urban">Urban</option>
+              <option value="nature">Nature</option>
+              <option value="indoor">Indoor</option>
+              <option value="industrial">Industrial</option>
+              <option value="fantasy world">Fantasy world</option>
+              <option value="minimal environment">Minimal environment</option>
+            </select>
+          </div>
+
+          {/* Atmosphere */}
+
+          <div>
+            <label className="block text-sm mb-1">Atmosphere</label>
+            <select
+              className="w-full p-2 border rounded"
+              value={hints.atmosphere}
+              onChange={(e) => updateHint("atmosphere", e.target.value)}
+            >
+              <option value="">Default / None</option>
+              <option value="calm">Calm</option>
+              <option value="tense">Tense</option>
+              <option value="epic">Epic</option>
+              <option value="dark">Dark</option>
+              <option value="mysterious">Mysterious</option>
+              <option value="peaceful">Peaceful</option>
+            </select>
+          </div>
+
+          {/* Style */}
+
+          <div>
+            <label className="block text-sm mb-1">Style</label>
+            <select
+              className="w-full p-2 border rounded"
+              value={hints.style}
+              onChange={(e) => updateHint("style", e.target.value)}
+            >
+              <option value="">Default / None</option>
+              <option value="photorealistic">Photorealistic</option>
+              <option value="cinematic">Cinematic</option>
+              <option value="anime">Anime</option>
+              <option value="cartoon">Cartoon</option>
+              <option value="illustration">Illustration</option>
+              <option value="concept art">Concept art</option>
+            </select>
+          </div>
+
+        </div>
+
+      )}
 
       {/* Example Buttons */}
 
@@ -199,23 +355,11 @@ The AI Prompt Builder is currently free to use. Generate cinematic prompts while
         </h2>
 
         <p className="mb-6">
-          An AI prompt builder transforms a simple scene description into a structured prompt that AI image and video generation models can interpret more accurately. Instead of random descriptive words, structured prompts organize visual elements such as subject, environment, lighting, atmosphere and style.
+          An AI prompt builder transforms a simple scene description into a structured prompt that AI image and video generation models can interpret more accurately.
         </p>
 
         <p className="mb-10">
-          Clear prompt structure improves consistency and quality in generated images and videos by providing stronger visual signals to the AI model.
-        </p>
-
-        <h2 className="text-2xl font-bold mb-4">
-          How the Prompt Builder Works
-        </h2>
-
-        <p className="mb-6">
-          The Cinematic Prompt Engine analyzes your scene description and extracts key visual components such as subject, environment, lighting and mood. It then classifies the scene type and selects the most relevant prompt engineering techniques.
-        </p>
-
-        <p className="mb-10">
-          Finally, the system constructs a structured prompt with high signal density, ensuring that every element contributes meaningful visual information for AI image and video generation.
+          Clear prompt structure improves consistency and quality in generated images and videos.
         </p>
 
       </div>
