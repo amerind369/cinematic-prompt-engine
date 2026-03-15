@@ -28,15 +28,22 @@ export default function Home() {
 
     setLoading(true)
 
+    const filteredHints = Object.fromEntries(
+      Object.entries(hints).filter(([_, value]) => value !== "")
+    )
+
+    const payload: any = { scene }
+
+    if (Object.keys(filteredHints).length > 0) {
+      payload.hints = filteredHints
+    }
+
     const res = await fetch("/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        scene,
-        hints
-      }),
+      body: JSON.stringify(payload),
     })
 
     const data = await res.json()
@@ -65,10 +72,24 @@ export default function Home() {
     }))
   }
 
+  const toggleHints = (checked: boolean) => {
+
+    setShowHints(checked)
+
+    if (!checked) {
+      setHints({
+        focus: "",
+        camera: "",
+        lighting: "",
+        environment: "",
+        atmosphere: "",
+        style: ""
+      })
+    }
+  }
+
   return (
     <main className="min-h-screen bg-gray-100 p-10">
-
-      {/* Header */}
 
       <header className="flex justify-between items-center mb-10">
 
@@ -117,133 +138,127 @@ export default function Home() {
 
       {/* Checkbox */}
 
-      <div className="mb-6">
+      <div className="mb-4">
         <label className="flex items-center gap-2 cursor-pointer">
           <input
             type="checkbox"
             checked={showHints}
-            onChange={(e) => setShowHints(e.target.checked)}
+            onChange={(e) => toggleHints(e.target.checked)}
           />
           Add scene details (optional)
         </label>
       </div>
 
-      {/* Dropdown Hints */}
-
       {showHints && (
 
-        <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="mb-6">
 
-          {/* Scene Focus */}
+          <p className="text-sm text-gray-600 mb-3">
+            Optional scene hints. These help the engine interpret your scene but do not override your description.
+          </p>
 
-          <div>
-            <label className="block text-sm mb-1">Scene Focus</label>
-            <select
-              className="w-full p-2 border rounded"
-              value={hints.focus}
-              onChange={(e) => updateHint("focus", e.target.value)}
-            >
-              <option value="">Default / None</option>
-              <option value="character focused">Character focused</option>
-              <option value="action focused">Action focused</option>
-              <option value="object focused">Object focused</option>
-              <option value="environment focused">Environment focused</option>
-              <option value="balanced scene">Balanced scene</option>
-            </select>
-          </div>
+          <div className="grid grid-cols-2 gap-4">
 
-          {/* Camera */}
+            <div>
+              <label className="block text-sm mb-1">Scene Focus</label>
+              <select
+                className="w-full p-2 border rounded"
+                value={hints.focus}
+                onChange={(e) => updateHint("focus", e.target.value)}
+              >
+                <option value="">Default / None</option>
+                <option value="character focused">Character focused</option>
+                <option value="action focused">Action focused</option>
+                <option value="object focused">Object focused</option>
+                <option value="environment focused">Environment focused</option>
+                <option value="balanced scene">Balanced scene</option>
+              </select>
+            </div>
 
-          <div>
-            <label className="block text-sm mb-1">Camera</label>
-            <select
-              className="w-full p-2 border rounded"
-              value={hints.camera}
-              onChange={(e) => updateHint("camera", e.target.value)}
-            >
-              <option value="">Default / None</option>
-              <option value="close-up">Close-up</option>
-              <option value="medium shot">Medium shot</option>
-              <option value="wide shot">Wide shot</option>
-              <option value="overhead view">Overhead view</option>
-              <option value="POV shot">POV shot</option>
-            </select>
-          </div>
+            <div>
+              <label className="block text-sm mb-1">Camera</label>
+              <select
+                className="w-full p-2 border rounded"
+                value={hints.camera}
+                onChange={(e) => updateHint("camera", e.target.value)}
+              >
+                <option value="">Default / None</option>
+                <option value="close-up">Close-up</option>
+                <option value="medium shot">Medium shot</option>
+                <option value="wide shot">Wide shot</option>
+                <option value="overhead view">Overhead view</option>
+                <option value="POV shot">POV shot</option>
+              </select>
+            </div>
 
-          {/* Lighting */}
+            <div>
+              <label className="block text-sm mb-1">Lighting</label>
+              <select
+                className="w-full p-2 border rounded"
+                value={hints.lighting}
+                onChange={(e) => updateHint("lighting", e.target.value)}
+              >
+                <option value="">Default / None</option>
+                <option value="soft lighting">Soft lighting</option>
+                <option value="dramatic lighting">Dramatic lighting</option>
+                <option value="low light">Low light</option>
+                <option value="backlit">Backlit</option>
+                <option value="neon lighting">Neon lighting</option>
+                <option value="storm lighting">Storm lighting</option>
+              </select>
+            </div>
 
-          <div>
-            <label className="block text-sm mb-1">Lighting</label>
-            <select
-              className="w-full p-2 border rounded"
-              value={hints.lighting}
-              onChange={(e) => updateHint("lighting", e.target.value)}
-            >
-              <option value="">Default / None</option>
-              <option value="soft lighting">Soft lighting</option>
-              <option value="dramatic lighting">Dramatic lighting</option>
-              <option value="low light">Low light</option>
-              <option value="backlit">Backlit</option>
-              <option value="neon lighting">Neon lighting</option>
-              <option value="storm lighting">Storm lighting</option>
-            </select>
-          </div>
+            <div>
+              <label className="block text-sm mb-1">Environment</label>
+              <select
+                className="w-full p-2 border rounded"
+                value={hints.environment}
+                onChange={(e) => updateHint("environment", e.target.value)}
+              >
+                <option value="">Default / None</option>
+                <option value="urban">Urban</option>
+                <option value="nature">Nature</option>
+                <option value="indoor">Indoor</option>
+                <option value="industrial">Industrial</option>
+                <option value="fantasy world">Fantasy world</option>
+                <option value="minimal environment">Minimal environment</option>
+              </select>
+            </div>
 
-          {/* Environment */}
+            <div>
+              <label className="block text-sm mb-1">Atmosphere</label>
+              <select
+                className="w-full p-2 border rounded"
+                value={hints.atmosphere}
+                onChange={(e) => updateHint("atmosphere", e.target.value)}
+              >
+                <option value="">Default / None</option>
+                <option value="calm">Calm</option>
+                <option value="tense">Tense</option>
+                <option value="epic">Epic</option>
+                <option value="dark">Dark</option>
+                <option value="mysterious">Mysterious</option>
+                <option value="peaceful">Peaceful</option>
+              </select>
+            </div>
 
-          <div>
-            <label className="block text-sm mb-1">Environment</label>
-            <select
-              className="w-full p-2 border rounded"
-              value={hints.environment}
-              onChange={(e) => updateHint("environment", e.target.value)}
-            >
-              <option value="">Default / None</option>
-              <option value="urban">Urban</option>
-              <option value="nature">Nature</option>
-              <option value="indoor">Indoor</option>
-              <option value="industrial">Industrial</option>
-              <option value="fantasy world">Fantasy world</option>
-              <option value="minimal environment">Minimal environment</option>
-            </select>
-          </div>
+            <div>
+              <label className="block text-sm mb-1">Style</label>
+              <select
+                className="w-full p-2 border rounded"
+                value={hints.style}
+                onChange={(e) => updateHint("style", e.target.value)}
+              >
+                <option value="">Default / None</option>
+                <option value="photorealistic">Photorealistic</option>
+                <option value="cinematic">Cinematic</option>
+                <option value="anime">Anime</option>
+                <option value="cartoon">Cartoon</option>
+                <option value="illustration">Illustration</option>
+                <option value="concept art">Concept art</option>
+              </select>
+            </div>
 
-          {/* Atmosphere */}
-
-          <div>
-            <label className="block text-sm mb-1">Atmosphere</label>
-            <select
-              className="w-full p-2 border rounded"
-              value={hints.atmosphere}
-              onChange={(e) => updateHint("atmosphere", e.target.value)}
-            >
-              <option value="">Default / None</option>
-              <option value="calm">Calm</option>
-              <option value="tense">Tense</option>
-              <option value="epic">Epic</option>
-              <option value="dark">Dark</option>
-              <option value="mysterious">Mysterious</option>
-              <option value="peaceful">Peaceful</option>
-            </select>
-          </div>
-
-          {/* Style */}
-
-          <div>
-            <label className="block text-sm mb-1">Style</label>
-            <select
-              className="w-full p-2 border rounded"
-              value={hints.style}
-              onChange={(e) => updateHint("style", e.target.value)}
-            >
-              <option value="">Default / None</option>
-              <option value="photorealistic">Photorealistic</option>
-              <option value="cinematic">Cinematic</option>
-              <option value="anime">Anime</option>
-              <option value="cartoon">Cartoon</option>
-              <option value="illustration">Illustration</option>
-              <option value="concept art">Concept art</option>
-            </select>
           </div>
 
         </div>
