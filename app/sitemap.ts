@@ -34,6 +34,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     {
+      url: 'https://cinematic-prompt-engine.vercel.app/dropdown-guide',
+      lastModified: new Date(),
+    },
+
+    {
       url: 'https://cinematic-prompt-engine.vercel.app/industries',
       lastModified: new Date(),
     },
