@@ -101,6 +101,7 @@ export default function Home() {
           <a href="/examples">Examples</a>
           <a href="/how-to-write-ai-prompts">Guide</a>
           <a href="/styles">Styles</a>
+          <a href="/dropdown-guide">Dropdown Guide</a>
           <a href="/industries">Industries</a>
           <a href="/problems">Problems</a>
         </nav>
