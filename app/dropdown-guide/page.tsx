@@ -6,9 +6,20 @@ export default function DropdownGuide() {
         Dropdown Guide for Cinematic Prompts
       </h1>
 
-      <p className="mb-10 text-gray-700">
+      <p className="mb-6 text-gray-700">
         The dropdown options in the Cinematic Prompt Engine are designed to help guide scene interpretation. They act as optional hints that influence how your scene is understood, but they never override your original description.
       </p>
+
+      {/* CTA TOP */}
+
+      <div className="mb-10">
+        <a
+          href="/"
+          className="px-6 py-3 bg-black text-white rounded-lg inline-block"
+        >
+          Try the AI Prompt Builder →
+        </a>
+      </div>
 
       {/* Scene Focus */}
 
@@ -127,6 +138,17 @@ export default function DropdownGuide() {
           Example: "A dragon flying" + Photorealistic → realistic creature instead of stylized.
         </p>
       </section>
+
+      {/* CTA BOTTOM */}
+
+      <div className="mt-10">
+        <a
+          href="/"
+          className="px-6 py-3 bg-black text-white rounded-lg inline-block"
+        >
+          Try the AI Prompt Builder →
+        </a>
+      </div>
 
     </main>
   )
