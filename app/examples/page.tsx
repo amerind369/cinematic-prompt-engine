@@ -21,12 +21,14 @@ export default function ExamplesPage() {
         generation models.
       </p>
 
-      <a
-        href="/"
-        className="text-blue-600 underline mb-10 inline-block"
-      >
-        Try the AI Prompt Builder →
-      </a>
+      <div className="mt-10">
+        <a
+          href="/"
+          className="px-6 py-3 bg-black text-white rounded-lg"
+        >
+          Try the AI Prompt Builder →
+        </a>
+      </div>
 
 
       <h2 className="text-xl font-semibold mt-8 mb-2">
