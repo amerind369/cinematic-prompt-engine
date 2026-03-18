@@ -371,8 +371,16 @@ export default function Home() {
   </h2>
 
   <p className="mb-6 text-gray-700">
-    Learn how to create better prompts, explore examples, and discover different styles.
-  </p>
+  Learn how to create better prompts in our{" "}
+  <a href="/how-to-write-ai-prompts" className="text-blue-600 underline">
+    detailed guide
+  </a>
+  , explore{" "}
+  <a href="/examples" className="text-blue-600 underline">
+    real examples
+  </a>
+  , and discover different styles.
+</p>
 
   <ul className="space-y-3 text-blue-600 underline">
 
