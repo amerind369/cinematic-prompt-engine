@@ -362,6 +362,54 @@ export default function Home() {
         </div>
       )}
 
+      {/* Internal Links Section */}
+
+<div className="mt-20 max-w-3xl">
+
+  <h2 className="text-2xl font-bold mb-4">
+    Explore More
+  </h2>
+
+  <p className="mb-6 text-gray-700">
+    Learn how to create better prompts, explore examples, and discover different styles.
+  </p>
+
+  <ul className="space-y-3 text-blue-600 underline">
+
+    <li>
+      <a href="/how-to-write-ai-prompts">
+        How to write AI prompts
+      </a>
+    </li>
+
+    <li>
+      <a href="/examples">
+        Prompt examples
+      </a>
+    </li>
+
+    <li>
+      <a href="/styles">
+        Explore prompt styles
+      </a>
+    </li>
+
+    <li>
+      <a href="/industries">
+        Use cases by industry
+      </a>
+    </li>
+
+    <li>
+      <a href="/problems">
+        Solve common AI image problems
+      </a>
+    </li>
+
+  </ul>
+
+</div>
+
       {/* SEO Content Section */}
 
       <div className="mt-20 max-w-3xl">
