@@ -185,6 +185,27 @@ The tool is currently free to use.
 Try the AI Prompt Builder →
 </a>
 
+      <div className="mt-16">
+
+  <h3 className="text-xl font-semibold mb-3">
+    Try it yourself
+  </h3>
+
+  <ul className="text-blue-600 underline space-y-2">
+    <li>
+      <a href="/">
+        Open Prompt Builder
+      </a>
+    </li>
+    <li>
+      <a href="/examples">
+        View prompt examples
+      </a>
+    </li>
+  </ul>
+
+</div>
+
     </main>
   )
 }
