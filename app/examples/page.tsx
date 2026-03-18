@@ -117,6 +117,27 @@ export default function ExamplesPage() {
         peaceful natural atmosphere.
       </div>
 
+      <div className="mt-16">
+
+  <h3 className="text-xl font-semibold mb-3">
+    Learn more
+  </h3>
+
+  <ul className="text-blue-600 underline space-y-2">
+    <li>
+      <a href="/how-to-write-ai-prompts">
+        How to write better AI prompts
+      </a>
+    </li>
+    <li>
+      <a href="/styles">
+        Explore different prompt styles
+      </a>
+    </li>
+  </ul>
+
+</div>
+
 
     </main>
   )
